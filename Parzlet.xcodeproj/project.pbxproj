@@ -12,6 +12,13 @@
 		49509FE21E18772B00D69999 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49509FE01E18772B00D69999 /* Main.storyboard */; };
 		49509FE41E18772B00D69999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49509FE31E18772B00D69999 /* Assets.xcassets */; };
 		49509FE71E18772B00D69999 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49509FE51E18772B00D69999 /* LaunchScreen.storyboard */; };
+		49509FF11E188F8E00D69999 /* GameBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49509FF01E188F8E00D69999 /* GameBox.swift */; };
+		49509FF31E188FB300D69999 /* GameBoxPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49509FF21E188FB300D69999 /* GameBoxPoint.swift */; };
+		49509FF61E18972F00D69999 /* UIImageEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49509FF51E18972F00D69999 /* UIImageEXT.swift */; };
+		49509FF81E189BCE00D69999 /* UIViewEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49509FF71E189BCE00D69999 /* UIViewEXT.swift */; };
+		49509FFE1E189F9600D69999 /* ArrayEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49509FFD1E189F9600D69999 /* ArrayEXT.swift */; };
+		4950A0001E18B6E300D69999 /* GameBoxImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49509FFF1E18B6E300D69999 /* GameBoxImageView.swift */; };
+		4950A0041E19223B00D69999 /* CustomStringConvertibleEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950A0031E19223B00D69999 /* CustomStringConvertibleEXT.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		49509FE31E18772B00D69999 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49509FE61E18772B00D69999 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49509FE81E18772B00D69999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49509FF01E188F8E00D69999 /* GameBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBox.swift; sourceTree = "<group>"; };
+		49509FF21E188FB300D69999 /* GameBoxPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoxPoint.swift; sourceTree = "<group>"; };
+		49509FF51E18972F00D69999 /* UIImageEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageEXT.swift; sourceTree = "<group>"; };
+		49509FF71E189BCE00D69999 /* UIViewEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewEXT.swift; sourceTree = "<group>"; };
+		49509FFD1E189F9600D69999 /* ArrayEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayEXT.swift; sourceTree = "<group>"; };
+		49509FFF1E18B6E300D69999 /* GameBoxImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoxImageView.swift; sourceTree = "<group>"; };
+		4950A0031E19223B00D69999 /* CustomStringConvertibleEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStringConvertibleEXT.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +68,29 @@
 		49509FDB1E18772B00D69999 /* Parzlet */ = {
 			isa = PBXGroup;
 			children = (
+				49509FF41E18971000D69999 /* Extensions */,
 				49509FDC1E18772B00D69999 /* AppDelegate.swift */,
 				49509FDE1E18772B00D69999 /* ViewController.swift */,
 				49509FE01E18772B00D69999 /* Main.storyboard */,
 				49509FE31E18772B00D69999 /* Assets.xcassets */,
 				49509FE51E18772B00D69999 /* LaunchScreen.storyboard */,
 				49509FE81E18772B00D69999 /* Info.plist */,
+				49509FF01E188F8E00D69999 /* GameBox.swift */,
+				49509FF21E188FB300D69999 /* GameBoxPoint.swift */,
+				49509FFF1E18B6E300D69999 /* GameBoxImageView.swift */,
 			);
 			path = Parzlet;
+			sourceTree = "<group>";
+		};
+		49509FF41E18971000D69999 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				49509FF51E18972F00D69999 /* UIImageEXT.swift */,
+				49509FF71E189BCE00D69999 /* UIViewEXT.swift */,
+				49509FFD1E189F9600D69999 /* ArrayEXT.swift */,
+				4950A0031E19223B00D69999 /* CustomStringConvertibleEXT.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +166,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4950A0041E19223B00D69999 /* CustomStringConvertibleEXT.swift in Sources */,
+				49509FFE1E189F9600D69999 /* ArrayEXT.swift in Sources */,
+				49509FF81E189BCE00D69999 /* UIViewEXT.swift in Sources */,
 				49509FDF1E18772B00D69999 /* ViewController.swift in Sources */,
+				49509FF61E18972F00D69999 /* UIImageEXT.swift in Sources */,
 				49509FDD1E18772B00D69999 /* AppDelegate.swift in Sources */,
+				49509FF31E188FB300D69999 /* GameBoxPoint.swift in Sources */,
+				4950A0001E18B6E300D69999 /* GameBoxImageView.swift in Sources */,
+				49509FF11E188F8E00D69999 /* GameBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
