@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     
     var gameBoard: [[GameBox]] = [[]]
     
-    let rowLevel = 5
-    let colLevel = 5
+    let rowLevel = 3
+    let colLevel = 3
     
     private func generateGameBoxPoints(rowAmount: Int, colAmount: Int) -> [GameBoxPoint]
     {
@@ -32,27 +32,33 @@ class ViewController: UIViewController {
         self.drawGameBoard()
     }
     
+    var emptyBoxesArray: [GameBox] = []
+    
+    private func moveEmptyBox(emptyBox: GameBox, direction: MoveDirection) -> Bool
+    {
+        switch direction {
+        case .DOWN:
+            return self.moveDownEmptyBox(gameBox: emptyBox)
+        case .LEFT:
+            return self.moveLeftEmptyBox(gameBox: emptyBox)
+        case .RIGHT:
+            return self.moveRightEmptyBox(gameBox: emptyBox)
+        case .UP:
+            return self.moveUpEmptyBox(gameBox: emptyBox)
+        }
+    }
+    
     func shuffleGameBox()
     {
-        var generatedGameBoxPoints = self.generateGameBoxPoints(rowAmount: rowLevel, colAmount: colLevel)
-        
-        for _ in 1...100
+        for _ in 1...2
         {
-            let randomIndex1 = generatedGameBoxPoints.randomIndex()
-            let randomPoint1 = generatedGameBoxPoints[randomIndex1]
-            
-            let randomIndex2 = generatedGameBoxPoints.randomIndex()
-            let randomPoint2 = generatedGameBoxPoints[randomIndex2]
-            
-            let candidate1 = self.gameBoard[randomPoint1.x][randomPoint1.y];
-            let candidate2 = self.gameBoard[randomPoint2.x][randomPoint2.y];
-            
-            let tempCurrentPoint = candidate1.currentPoint
-            candidate1.currentPoint = candidate2.currentPoint
-            candidate2.currentPoint = tempCurrentPoint
-            
-            self.gameBoard[randomPoint1.x][randomPoint1.y] = candidate2
-            self.gameBoard[randomPoint2.x][randomPoint2.y] = candidate1
+            for emptyBoxItem in self.emptyBoxesArray
+            {
+                self.moveEmptyBox(
+                    emptyBox: emptyBoxItem,
+                    direction: MoveDirection.randomDirection()
+                )
+            }
         }
     }
     
@@ -87,11 +93,12 @@ class ViewController: UIViewController {
                     gameSizeLevel: rowLevel
                 )
                 
-                if i == rowLevel - 1 && j == colLevel - 1 {
-                    createdGameBox.isEmpty = true
-                }
-                
+//                if i == rowLevel - 1 && j == colLevel - 1 {
+//                    createdGameBox.isEmpty = true
+//                }
+//                
                 if i == rowLevel - 1 && j == 0 {
+                    self.emptyBoxesArray.append(createdGameBox)
                     createdGameBox.isEmpty = true
                 }
                 
@@ -247,6 +254,30 @@ class ViewController: UIViewController {
         return true
     }
     
+    private func moveLeftEmptyBox(gameBox: GameBox) -> Bool
+    {
+        guard let nextDestinationBoxPoint = gameBox.getLeftBoxPoint() else {
+            debugPrint("No left")
+            return false
+        };
+        
+        let nextDestinationBox = self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y]
+        
+        guard !nextDestinationBox.isEmpty else { debugPrint("Left destination empty!")
+            return false };
+        
+        // Change place of boxes in gameBoard
+        self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y] = gameBox
+        self.gameBoard[gameBox.currentPoint.x][gameBox.currentPoint.y] = nextDestinationBox
+        
+        nextDestinationBox.goRightBox()
+        gameBox.goLeftBox()
+        
+        self.drawGameBoard()
+        
+        return true
+    }
+    
     private func moveRight(gameBox: GameBox) -> Bool
     {
         guard let nextDestinationBoxPoint = gameBox.getRightBoxPoint() else {
@@ -268,6 +299,28 @@ class ViewController: UIViewController {
         
         self.drawGameBoard()
         
+        return true
+    }
+    
+    private func moveRightEmptyBox(gameBox: GameBox) -> Bool
+    {
+        guard let nextDestinationBoxPoint = gameBox.getRightBoxPoint() else {
+            debugPrint("No right")
+            return false
+        };
+        
+        let nextDestinationBox = self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y]
+        
+        guard !nextDestinationBox.isEmpty else { debugPrint("Right destination empty!")
+            return false };
+        
+        self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y] = gameBox
+        self.gameBoard[gameBox.currentPoint.x][gameBox.currentPoint.y] = nextDestinationBox
+        
+        nextDestinationBox.goLeftBox()
+        gameBox.goRightBox()
+        
+        self.drawGameBoard()
         return true
     }
     
@@ -294,6 +347,30 @@ class ViewController: UIViewController {
         return true
     }
     
+    private func moveUpEmptyBox(gameBox: GameBox) -> Bool
+    {
+        guard let nextDestinationBoxPoint = gameBox.getUpBoxPoint() else {
+            debugPrint("No up")
+            return false
+        };
+        
+        let nextDestinationBox = self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y]
+        
+        guard !nextDestinationBox.isEmpty else { debugPrint("Up destination empty!")
+            return false };
+        
+        // Change place of boxes in gameBoard
+        self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y] = gameBox
+        self.gameBoard[gameBox.currentPoint.x][gameBox.currentPoint.y] = nextDestinationBox
+        
+        nextDestinationBox.goDownBox()
+        gameBox.goUpBox()
+        
+        self.drawGameBoard()
+        return true
+    }
+    
+    
     private func moveDown(gameBox: GameBox) -> Bool
     {
         guard let nextDestinationBoxPoint = gameBox.getDownBoxPoint() else {
@@ -304,6 +381,29 @@ class ViewController: UIViewController {
         let nextDestinationBox = self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y]
         
         guard nextDestinationBox.isEmpty else { debugPrint("Down destination full!")
+            return false };
+        
+        // Change place of boxes in gameBoard
+        self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y] = gameBox
+        self.gameBoard[gameBox.currentPoint.x][gameBox.currentPoint.y] = nextDestinationBox
+        
+        nextDestinationBox.goUpBox()
+        gameBox.goDownBox()
+        
+        self.drawGameBoard()
+        return true
+    }
+    
+    private func moveDownEmptyBox(gameBox: GameBox) -> Bool
+    {
+        guard let nextDestinationBoxPoint = gameBox.getDownBoxPoint() else {
+            debugPrint("No down")
+            return false
+        };
+        
+        let nextDestinationBox = self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y]
+        
+        guard !nextDestinationBox.isEmpty else { debugPrint("Down destination empty!")
             return false };
         
         // Change place of boxes in gameBoard

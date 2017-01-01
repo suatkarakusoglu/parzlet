@@ -8,10 +8,17 @@
 
 import Foundation
 
-enum MoveDirection: String {
+enum MoveDirection: Int {
     case LEFT
     case RIGHT
     case UP
     case DOWN
+    
+    static func randomDirection() -> MoveDirection
+    {
+        let elementCount = 4
+        let randomDirectionInt = Int(arc4random_uniform(UInt32(elementCount)))
+        return MoveDirection.init(rawValue: randomDirectionInt)!
+    }
 }
     
