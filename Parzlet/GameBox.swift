@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameBox {
+class GameBox : CustomStringConvertible{
 
     var image: UIImage
     var realPoint: GameBoxPoint
@@ -30,6 +30,24 @@ class GameBox {
         return GameBoxPoint(x: self.currentPoint.x, y: self.currentPoint.y - 1)
     }
     
+    func getRightBoxPoint() -> GameBoxPoint?
+    {
+        guard self.currentPoint.y + 1 < gameSizeLevel else { return nil }
+        return GameBoxPoint(x: self.currentPoint.x, y: self.currentPoint.y + 1)
+    }
+    
+    func getUpBoxPoint() -> GameBoxPoint?
+    {
+        guard self.currentPoint.x - 1 >= 0 else { return nil }
+        return GameBoxPoint(x: self.currentPoint.x - 1, y: self.currentPoint.y)
+    }
+    
+    func getDownBoxPoint() -> GameBoxPoint?
+    {
+        guard self.currentPoint.x + 1 < gameSizeLevel else { return nil }
+        return GameBoxPoint(x: self.currentPoint.x + 1, y: self.currentPoint.y)
+    }
+
     func goLeftBox()
     {
         self.currentPoint.y = self.currentPoint.y - 1
@@ -40,6 +58,18 @@ class GameBox {
         self.currentPoint.y = self.currentPoint.y + 1
     }
     
+    func goUpBox()
+    {
+        self.currentPoint.x = self.currentPoint.x - 1
+    }
     
+    func goDownBox()
+    {
+        self.currentPoint.x = self.currentPoint.x + 1
+    }
+    
+    var description : String {
+        return "[RealPoint: \(self.realPoint), CurrentPoint: \(self.currentPoint), isEmpty: \(self.isEmpty)]"
+    }
 }
     

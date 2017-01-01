@@ -13,7 +13,7 @@ extension CustomStringConvertible
     func logMe(note: String? = nil)
     {
         let debugPrintText = "[\(Time.getCurrentTime())] >\(note ?? "") \(self.description)"
-        debugPrint("\(self.description)");
+        debugPrint("\(debugPrintText)");
     }
 }
 
@@ -22,9 +22,9 @@ struct Time
     static func getCurrentTime() -> String
     {
         let currentDate = NSDate()
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
-        let convertedDate = dateFormatter.stringFromDate(currentDate)
+        let convertedDate = dateFormatter.string(from: currentDate as Date)
         return convertedDate
     }
 }

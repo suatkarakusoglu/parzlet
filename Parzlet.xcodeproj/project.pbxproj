@@ -19,6 +19,7 @@
 		49509FFE1E189F9600D69999 /* ArrayEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49509FFD1E189F9600D69999 /* ArrayEXT.swift */; };
 		4950A0001E18B6E300D69999 /* GameBoxImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49509FFF1E18B6E300D69999 /* GameBoxImageView.swift */; };
 		4950A0041E19223B00D69999 /* CustomStringConvertibleEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950A0031E19223B00D69999 /* CustomStringConvertibleEXT.swift */; };
+		4950A0061E19246600D69999 /* MoveDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950A0051E19246600D69999 /* MoveDirection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		49509FFD1E189F9600D69999 /* ArrayEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayEXT.swift; sourceTree = "<group>"; };
 		49509FFF1E18B6E300D69999 /* GameBoxImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoxImageView.swift; sourceTree = "<group>"; };
 		4950A0031E19223B00D69999 /* CustomStringConvertibleEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStringConvertibleEXT.swift; sourceTree = "<group>"; };
+		4950A0051E19246600D69999 /* MoveDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveDirection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				49509FF01E188F8E00D69999 /* GameBox.swift */,
 				49509FF21E188FB300D69999 /* GameBoxPoint.swift */,
 				49509FFF1E18B6E300D69999 /* GameBoxImageView.swift */,
+				4950A0051E19246600D69999 /* MoveDirection.swift */,
 			);
 			path = Parzlet;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				49509FFE1E189F9600D69999 /* ArrayEXT.swift in Sources */,
 				49509FF81E189BCE00D69999 /* UIViewEXT.swift in Sources */,
 				49509FDF1E18772B00D69999 /* ViewController.swift in Sources */,
+				4950A0061E19246600D69999 /* MoveDirection.swift in Sources */,
 				49509FF61E18972F00D69999 /* UIImageEXT.swift in Sources */,
 				49509FDD1E18772B00D69999 /* AppDelegate.swift in Sources */,
 				49509FF31E188FB300D69999 /* GameBoxPoint.swift in Sources */,

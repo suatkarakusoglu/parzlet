@@ -28,22 +28,31 @@ class ViewController: UIViewController {
         return gameBoxPoints
     }
     @IBAction func actionShuffleGame(_ sender: UIButton) {
-        self.shuffleGameBox(gameToShuffle: self.gameBoard)
+        self.shuffleGameBox()
         self.drawGameBoard()
     }
     
-    func shuffleGameBox(gameToShuffle: [[GameBox]])
+    func shuffleGameBox()
     {
         var generatedGameBoxPoints = self.generateGameBoxPoints(rowAmount: rowLevel, colAmount: colLevel)
-        // TODOX: Take out right part
         
-        gameToShuffle.forEach { (gameBoxRow: [GameBox]) in
-            gameBoxRow.forEach({ (gameBox: GameBox) in
-                let randomIndex = generatedGameBoxPoints.randomIndex()
-                let randomPoint = generatedGameBoxPoints[randomIndex]
-                generatedGameBoxPoints.remove(at: randomIndex)
-                gameBox.currentPoint = randomPoint
-            })
+        for _ in 1...100
+        {
+            let randomIndex1 = generatedGameBoxPoints.randomIndex()
+            let randomPoint1 = generatedGameBoxPoints[randomIndex1]
+            
+            let randomIndex2 = generatedGameBoxPoints.randomIndex()
+            let randomPoint2 = generatedGameBoxPoints[randomIndex2]
+            
+            let candidate1 = self.gameBoard[randomPoint1.x][randomPoint1.y];
+            let candidate2 = self.gameBoard[randomPoint2.x][randomPoint2.y];
+            
+            let tempCurrentPoint = candidate1.currentPoint
+            candidate1.currentPoint = candidate2.currentPoint
+            candidate2.currentPoint = tempCurrentPoint
+            
+            self.gameBoard[randomPoint1.x][randomPoint1.y] = candidate2
+            self.gameBoard[randomPoint2.x][randomPoint2.y] = candidate1
         }
     }
     
@@ -89,7 +98,7 @@ class ViewController: UIViewController {
                 gameBoxItems[i].append(createdGameBox)
             }
         }
-        //self.shuffleGameBox(gameToShuffle: gameBoxItems)
+        //self.shuffleGameBox()
         self.gameBoard = gameBoxItems;
         self.drawGameBoard()
     }
@@ -104,20 +113,14 @@ class ViewController: UIViewController {
         
         let rowCount = self.gameBoard.count
         let gameBoxHeight = gameBoardHeight / CGFloat(rowCount)
-
         
-        for rowIndex in 0..<rowCount
-        {
-            let columnCount = self.gameBoard[rowIndex].count
-
-            for columnIndex in 0..<columnCount
-            {
-                let gameBoxWidth = gameBoardWidth / CGFloat(columnCount)
-                let currentGameBox = self.gameBoard[rowIndex][columnIndex]
-                let imageToDraw = currentGameBox.image
+        for gameBoxRows in self.gameBoard{
+            for gameBoxItem in gameBoxRows{
+                let gameBoxWidth = gameBoardWidth / CGFloat(self.rowLevel)
+                let imageToDraw = gameBoxItem.image
                 
-                let xOffset = CGFloat(currentGameBox.currentPoint.y) * gameBoxWidth
-                let yOffset = CGFloat(currentGameBox.currentPoint.x) * gameBoxHeight
+                let xOffset = CGFloat(gameBoxItem.currentPoint.y) * gameBoxWidth
+                let yOffset = CGFloat(gameBoxItem.currentPoint.x) * gameBoxHeight
                 
                 let frameToDrawImage = CGRect(
                     x: xOffset,
@@ -126,9 +129,9 @@ class ViewController: UIViewController {
                     height: gameBoxHeight
                 )
                 let currentImageView = GameBoxImageView(frame: frameToDrawImage)
-                currentImageView.gameBox = currentGameBox
+                currentImageView.gameBox = gameBoxItem
                 currentImageView.isUserInteractionEnabled = true
-                if currentGameBox.isEmpty {
+                if gameBoxItem.isEmpty {
                     currentImageView.image = UIImage(named: "emptyBox")!
                 }else{
                     currentImageView.image = imageToDraw
@@ -147,9 +150,17 @@ class ViewController: UIViewController {
     
     func tapped(_ sender: UITapGestureRecognizer)
     {
-        if let gameBoxImageView = sender.view as? GameBoxImageView
-        {
-        }
+        guard let gameBoxImageView = sender.view as? GameBoxImageView else { return }
+        guard let gameBoxToMove = gameBoxImageView.gameBox else { return }
+        
+        let movedUp = self.moveUp(gameBox: gameBoxToMove)
+        if movedUp { return }
+        let movedDown = self.moveDown(gameBox: gameBoxToMove)
+        if movedDown { return }
+        let movedLeft = self.moveLeft(gameBox: gameBoxToMove)
+        if movedLeft { return }
+        let movedRight = self.moveRight(gameBox: gameBoxToMove)
+        if movedRight { return }
     }
     
     private func addDirectionSwipeGestures(imageSwiped: UIImageView)
@@ -177,10 +188,19 @@ class ViewController: UIViewController {
             case UISwipeGestureRecognizerDirection.right:
                 if let gameBoxImageView = gesture.view as? GameBoxImageView
                 {
+                    if let activeGameBox = gameBoxImageView.gameBox
+                    {
+                        self.moveRight(gameBox: activeGameBox)
+                    }
                 }
-                print("Swiped right")
             case UISwipeGestureRecognizerDirection.down:
-                print("Swiped down")
+                if let gameBoxImageView = gesture.view as? GameBoxImageView
+                {
+                    if let activeGameBox = gameBoxImageView.gameBox
+                    {
+                        self.moveDown(gameBox: activeGameBox)
+                    }
+                }
             case UISwipeGestureRecognizerDirection.left:
                 if let gameBoxImageView = gesture.view as? GameBoxImageView
                 {
@@ -189,63 +209,112 @@ class ViewController: UIViewController {
                         self.moveLeft(gameBox: activeGameBox)
                     }
                 }
-                print("Swiped left")
             case UISwipeGestureRecognizerDirection.up:
-                print("Swiped up")
+                if let gameBoxImageView = gesture.view as? GameBoxImageView
+                {
+                    if let activeGameBox = gameBoxImageView.gameBox
+                    {
+                        self.moveUp(gameBox: activeGameBox)
+                    }
+                }
             default:
                 break
             }
         }
     }
     
-    enum MoveDirection: String {
-        case LEFT
-        case RIGHT
-        case UP
-        case DOWN
-    }
-    
-    private func moveGameBox(boxToMove: GameBox, direction: MoveDirection)
-    {
-        switch direction {
-        case .LEFT:
-            self.moveLeft(gameBox: boxToMove)
-        default:
-            debugPrint("Handle \(direction.rawValue) case")
-        }
-        //TODOX: UPDATE SCREEN
-        self.drawGameBoard()
-        //TODO: Check if finished
-        
-    }
-    
-    private func moveLeft(gameBox: GameBox)
+    private func moveLeft(gameBox: GameBox) -> Bool
     {
         guard let nextDestinationBoxPoint = gameBox.getLeftBoxPoint() else {
             debugPrint("No left")
-            return
+            return false
         };
         
         let nextDestinationBox = self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y]
-        guard nextDestinationBox.isEmpty else { debugPrint("Left destination full!")
-            return };
-     
         
+        guard nextDestinationBox.isEmpty else { debugPrint("Left destination full!")
+            return false };
+     
+        // Change place of boxes in gameBoard
+        self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y] = gameBox
+        self.gameBoard[gameBox.currentPoint.x][gameBox.currentPoint.y] = nextDestinationBox
+
         nextDestinationBox.goRightBox()
         gameBox.goLeftBox()
+        
         self.drawGameBoard()
+        
+        return true
     }
     
-    private func moveRight(gameBox: GameBox)
+    private func moveRight(gameBox: GameBox) -> Bool
     {
+        guard let nextDestinationBoxPoint = gameBox.getRightBoxPoint() else {
+            debugPrint("No right")
+            return false
+        };
+        
+        let nextDestinationBox = self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y]
+        
+        guard nextDestinationBox.isEmpty else { debugPrint("Right destination full!")
+            return false };
+        
+        // Change place of boxes in gameBoard
+        self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y] = gameBox
+        self.gameBoard[gameBox.currentPoint.x][gameBox.currentPoint.y] = nextDestinationBox
+        
+        nextDestinationBox.goLeftBox()
+        gameBox.goRightBox()
+        
+        self.drawGameBoard()
+        
+        return true
     }
     
-    private func moveUp(gameBox: GameBox)
+    private func moveUp(gameBox: GameBox) -> Bool
     {
+        guard let nextDestinationBoxPoint = gameBox.getUpBoxPoint() else {
+            debugPrint("No up")
+            return false
+        };
+        
+        let nextDestinationBox = self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y]
+        
+        guard nextDestinationBox.isEmpty else { debugPrint("Up destination full!")
+            return false };
+        
+        // Change place of boxes in gameBoard
+        self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y] = gameBox
+        self.gameBoard[gameBox.currentPoint.x][gameBox.currentPoint.y] = nextDestinationBox
+        
+        nextDestinationBox.goDownBox()
+        gameBox.goUpBox()
+        
+        self.drawGameBoard()
+        return true
     }
     
-    private func moveDown(gameBox: GameBox)
+    private func moveDown(gameBox: GameBox) -> Bool
     {
+        guard let nextDestinationBoxPoint = gameBox.getDownBoxPoint() else {
+            debugPrint("No down")
+            return false
+        };
+        
+        let nextDestinationBox = self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y]
+        
+        guard nextDestinationBox.isEmpty else { debugPrint("Down destination full!")
+            return false };
+        
+        // Change place of boxes in gameBoard
+        self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y] = gameBox
+        self.gameBoard[gameBox.currentPoint.x][gameBox.currentPoint.y] = nextDestinationBox
+        
+        nextDestinationBox.goUpBox()
+        gameBox.goDownBox()
+        
+        self.drawGameBoard()
+        return true
     }
 }
 

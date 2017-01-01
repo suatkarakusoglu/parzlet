@@ -8,11 +8,15 @@
 
 import UIKit
 
-class GameBoxPoint{
+class GameBoxPoint: CustomStringConvertible {
     var x: Int
     var y: Int
     init(x:Int, y:Int){
         self.x = x
         self.y = y
+    }
+    
+    var description: String{
+        return "[x:\(self.x), y: \(self.y)]"
     }
 }
