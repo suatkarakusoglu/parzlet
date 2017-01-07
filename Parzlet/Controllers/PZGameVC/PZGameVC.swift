@@ -1,32 +1,30 @@
 //
-//  ViewController.swift
+//  PZGameVC.swift
 //  Parzlet
 //
-//  Created by Suat Karakusoglu on 1/1/17.
+//  Created by Suat Karakusoglu on 1/7/17.
 //  Copyright © 2017 Parzlet. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class PZGameVC: PZBaseViewController {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    init()
+    {
+        super.init(nibName: PZGameVC.className() , bundle: nil)
+    }
+    
     @IBOutlet weak var viewGameBoard: UIView!
     
     var gameBoard: [[GameBox]] = [[]]
     
-    let rowLevel = 3
-    let colLevel = 3
+    let rowLevel = 4
+    let colLevel = 4
     
-    private func generateGameBoxPoints(rowAmount: Int, colAmount: Int) -> [GameBoxPoint]
-    {
-        var gameBoxPoints: [GameBoxPoint] = [GameBoxPoint]();
-        for i in 0..<rowAmount{
-            for j in 0..<colAmount{
-                gameBoxPoints.append(GameBoxPoint(x: i, y: j))
-            }
-        }
-        return gameBoxPoints
-    }
     @IBAction func actionShuffleGame(_ sender: UIButton) {
         self.shuffleGameBox()
         self.drawGameBoard()
@@ -47,10 +45,13 @@ class ViewController: UIViewController {
             return self.moveUpEmptyBox(gameBox: emptyBox)
         }
     }
-    
+    // TODOX: Refactor the code
+    // TODOX: Decide if the user winned.
+    // TODOX: Make this screen parametric
+    // TODOX: Solve step by step
     func shuffleGameBox()
     {
-        for _ in 1...2
+        for _ in 1...5
         {
             for emptyBoxItem in self.emptyBoxesArray
             {
@@ -64,11 +65,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let realImage = UIImage(named: "sero")!
+        let realImage = UIImage(named: "ays")!
         let imageOfGame = realImage.smaller(maxWidth: self.viewGameBoard.frame.width)!
-
+        
         var gameBoxItems: [[GameBox]] = [[GameBox]]()
-
+        
         let imageOfGameSize = imageOfGame.size
         let gameBoxWidth = imageOfGameSize.width / CGFloat(colLevel)
         let gameBoxHeight = imageOfGameSize.height / CGFloat(rowLevel)
@@ -85,7 +86,7 @@ class ViewController: UIViewController {
                            height: gameBoxHeight)
                 )
                 let croppedImage = UIImage(cgImage: croppedImagePart!)
-
+                
                 let createdGameBox = GameBox(
                     image: croppedImage,
                     realPoint: GameBoxPoint(x:i,y:j),
@@ -93,10 +94,11 @@ class ViewController: UIViewController {
                     gameSizeLevel: rowLevel
                 )
                 
-//                if i == rowLevel - 1 && j == colLevel - 1 {
-//                    createdGameBox.isEmpty = true
-//                }
-//                
+                //                if i == rowLevel - 1 && j == colLevel - 1 {
+                //                    self.emptyBoxesArray.append(createdGameBox)
+                //                    createdGameBox.isEmpty = true
+                //                }
+                //
                 if i == rowLevel - 1 && j == 0 {
                     self.emptyBoxesArray.append(createdGameBox)
                     createdGameBox.isEmpty = true
@@ -109,7 +111,7 @@ class ViewController: UIViewController {
         self.gameBoard = gameBoxItems;
         self.drawGameBoard()
     }
-
+    
     func drawGameBoard()
     {
         self.viewGameBoard.subviews.forEach({ $0.removeFromSuperview() })
@@ -139,7 +141,7 @@ class ViewController: UIViewController {
                 currentImageView.gameBox = gameBoxItem
                 currentImageView.isUserInteractionEnabled = true
                 if gameBoxItem.isEmpty {
-                    currentImageView.image = UIImage(named: "emptyBox")!
+                    currentImageView.image = UIImage(named: "empty_box")!
                 }else{
                     currentImageView.image = imageToDraw
                     
@@ -183,7 +185,7 @@ class ViewController: UIViewController {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeUp.direction = UISwipeGestureRecognizerDirection.up
         imageSwiped.addGestureRecognizer(swipeUp)
-
+        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         imageSwiped.addGestureRecognizer(swipeLeft)
@@ -241,11 +243,11 @@ class ViewController: UIViewController {
         
         guard nextDestinationBox.isEmpty else { debugPrint("Left destination full!")
             return false };
-     
+        
         // Change place of boxes in gameBoard
         self.gameBoard[nextDestinationBoxPoint.x][nextDestinationBoxPoint.y] = gameBox
         self.gameBoard[gameBox.currentPoint.x][gameBox.currentPoint.y] = nextDestinationBox
-
+        
         nextDestinationBox.goRightBox()
         gameBox.goLeftBox()
         
@@ -417,4 +419,3 @@ class ViewController: UIViewController {
         return true
     }
 }
-

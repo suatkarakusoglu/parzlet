@@ -16,9 +16,8 @@ enum MoveDirection: Int {
     
     static func randomDirection() -> MoveDirection
     {
-        let elementCount = 4
-        let randomDirectionInt = Int(arc4random_uniform(UInt32(elementCount)))
-        return MoveDirection.init(rawValue: randomDirectionInt)!
+        let randomDirectionIntExt = (0...4).randomInt()!
+        return MoveDirection.init(rawValue: randomDirectionIntExt)!
     }
 }
     

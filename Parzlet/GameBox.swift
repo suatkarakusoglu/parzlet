@@ -16,7 +16,11 @@ class GameBox : CustomStringConvertible{
     var gameSizeLevel: Int
     var isEmpty: Bool = false
     
-    init(image: UIImage, realPoint: GameBoxPoint, currentPoint: GameBoxPoint, gameSizeLevel: Int, isEmpty: Bool = false)
+    init(image: UIImage,
+         realPoint: GameBoxPoint,
+         currentPoint: GameBoxPoint,
+         gameSizeLevel: Int,
+         isEmpty: Bool = false)
     {
         self.image = image
         self.realPoint = realPoint

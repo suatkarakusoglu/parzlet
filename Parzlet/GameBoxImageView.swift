@@ -9,7 +9,5 @@
 import UIKit
 
 class GameBoxImageView: UIImageView {
-
     var gameBox: GameBox? = nil
-
 }
