@@ -31,6 +31,7 @@ class PZGameView: UIView {
         self.imageToShow = imageToShow
         self.divisionLevel = divisionLevel
         self.prepareGameBoard()
+        self.drawGameBoard()
     }
     
     private func prepareGameBoard() {
@@ -100,13 +101,14 @@ class PZGameView: UIView {
         
         if nextDestinationBox.isNotEmpty()
         {
-            "Down destination full!".logMe()
+            "\(direction) full!".logMe()
             return false
         }
         
         self.changePlaces(gameBox1: gameBox, gameBox2: nextDestinationBox)
         nextDestinationBox.goToDirection(direction: direction.getReverseDirection())
         gameBox.goToDirection(direction: direction)
+        self.drawGameBoard()
         return true
     }
 
@@ -153,6 +155,7 @@ class PZGameView: UIView {
                     currentImageView.addGestureRecognizer(tapGesture)
                     self.addDirectionSwipeGestures(imageSwiped: currentImageView)
                 }
+                
                 currentImageView.drawBorder(
                     color: UIColor.green,
                     borderWidth: 0.5)

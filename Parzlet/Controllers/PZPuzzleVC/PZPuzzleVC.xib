@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PZPuzzleVC" customModule="Parzlet" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewPuzzleGameContainer" destination="u10-UQ-XLL" id="yhL-x1-sN0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u10-UQ-XLL">
+                    <rect key="frame" x="0.0" y="67" width="375" height="375"/>
+                    <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="375" id="gEM-u6-AZW"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPI-b8-nq3">
+                    <rect key="frame" x="162" y="637" width="50" height="30"/>
+                    <state key="normal" title="Shuffle"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="u10-UQ-XLL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HA1-XF-TM0"/>
+                <constraint firstItem="lPI-b8-nq3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HeQ-bv-fiV"/>
+                <constraint firstItem="u10-UQ-XLL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="67" id="Hhw-y0-Z9F"/>
+                <constraint firstAttribute="trailing" secondItem="u10-UQ-XLL" secondAttribute="trailing" id="Jtb-pU-gA1"/>
+                <constraint firstAttribute="bottom" secondItem="lPI-b8-nq3" secondAttribute="bottom" id="tGK-7h-Jbo"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

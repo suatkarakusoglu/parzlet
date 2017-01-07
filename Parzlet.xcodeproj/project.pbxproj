@@ -13,8 +13,6 @@
 		49509FF81E189BCE00D69999 /* UIViewEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49509FF71E189BCE00D69999 /* UIViewEXT.swift */; };
 		49509FFE1E189F9600D69999 /* ArrayEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49509FFD1E189F9600D69999 /* ArrayEXT.swift */; };
 		4950A0041E19223B00D69999 /* CustomStringConvertibleEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4950A0031E19223B00D69999 /* CustomStringConvertibleEXT.swift */; };
-		49B87C111E215CE0005D6D84 /* PZGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B87C0F1E215CE0005D6D84 /* PZGameVC.swift */; };
-		49B87C121E215CE0005D6D84 /* PZGameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B87C101E215CE0005D6D84 /* PZGameVC.xib */; };
 		49B87C141E215E2A005D6D84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49B87C131E215E2A005D6D84 /* Assets.xcassets */; };
 		49B87C1A1E216096005D6D84 /* GameBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B87C161E216096005D6D84 /* GameBox.swift */; };
 		49B87C1B1E216096005D6D84 /* GameBoxImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B87C171E216096005D6D84 /* GameBoxImageView.swift */; };
@@ -24,6 +22,8 @@
 		49B87C221E2160BD005D6D84 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49B87C201E2160BD005D6D84 /* Info.plist */; };
 		49B87C291E216C81005D6D84 /* PZGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B87C281E216C81005D6D84 /* PZGameView.swift */; };
 		49B87C2B1E2172AD005D6D84 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B87C2A1E2172AD005D6D84 /* GameBoard.swift */; };
+		49B87C2F1E21855D005D6D84 /* PZPuzzleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B87C2D1E21855D005D6D84 /* PZPuzzleVC.swift */; };
+		49B87C301E21855D005D6D84 /* PZPuzzleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B87C2E1E21855D005D6D84 /* PZPuzzleVC.xib */; };
 		49FD86F01E2149A3008E9B15 /* PZBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD86EF1E2149A2008E9B15 /* PZBaseViewController.swift */; };
 		49FD86F81E2149E8008E9B15 /* PZMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD86F61E2149E8008E9B15 /* PZMenuVC.swift */; };
 		49FD86F91E2149E8008E9B15 /* PZMenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49FD86F71E2149E8008E9B15 /* PZMenuVC.xib */; };
@@ -39,8 +39,6 @@
 		49509FF71E189BCE00D69999 /* UIViewEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewEXT.swift; sourceTree = "<group>"; };
 		49509FFD1E189F9600D69999 /* ArrayEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayEXT.swift; sourceTree = "<group>"; };
 		4950A0031E19223B00D69999 /* CustomStringConvertibleEXT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStringConvertibleEXT.swift; sourceTree = "<group>"; };
-		49B87C0F1E215CE0005D6D84 /* PZGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZGameVC.swift; sourceTree = "<group>"; };
-		49B87C101E215CE0005D6D84 /* PZGameVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PZGameVC.xib; sourceTree = "<group>"; };
 		49B87C131E215E2A005D6D84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49B87C161E216096005D6D84 /* GameBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBox.swift; sourceTree = "<group>"; };
 		49B87C171E216096005D6D84 /* GameBoxImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoxImageView.swift; sourceTree = "<group>"; };
@@ -50,6 +48,8 @@
 		49B87C201E2160BD005D6D84 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49B87C281E216C81005D6D84 /* PZGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZGameView.swift; sourceTree = "<group>"; };
 		49B87C2A1E2172AD005D6D84 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
+		49B87C2D1E21855D005D6D84 /* PZPuzzleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZPuzzleVC.swift; sourceTree = "<group>"; };
+		49B87C2E1E21855D005D6D84 /* PZPuzzleVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PZPuzzleVC.xib; sourceTree = "<group>"; };
 		49FD86EF1E2149A2008E9B15 /* PZBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZBaseViewController.swift; sourceTree = "<group>"; };
 		49FD86F61E2149E8008E9B15 /* PZMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZMenuVC.swift; sourceTree = "<group>"; };
 		49FD86F71E2149E8008E9B15 /* PZMenuVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PZMenuVC.xib; sourceTree = "<group>"; };
@@ -111,15 +111,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		49B87C0E1E215BE5005D6D84 /* PZGameVC */ = {
-			isa = PBXGroup;
-			children = (
-				49B87C0F1E215CE0005D6D84 /* PZGameVC.swift */,
-				49B87C101E215CE0005D6D84 /* PZGameVC.xib */,
-			);
-			path = PZGameVC;
-			sourceTree = "<group>";
-		};
 		49B87C151E216072005D6D84 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,11 +133,20 @@
 			path = AppFiles;
 			sourceTree = "<group>";
 		};
+		49B87C2C1E21853C005D6D84 /* PZPuzzleVC */ = {
+			isa = PBXGroup;
+			children = (
+				49B87C2D1E21855D005D6D84 /* PZPuzzleVC.swift */,
+				49B87C2E1E21855D005D6D84 /* PZPuzzleVC.xib */,
+			);
+			path = PZPuzzleVC;
+			sourceTree = "<group>";
+		};
 		49FD86EE1E21498E008E9B15 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				49FD86EF1E2149A2008E9B15 /* PZBaseViewController.swift */,
-				49B87C0E1E215BE5005D6D84 /* PZGameVC */,
+				49B87C2C1E21853C005D6D84 /* PZPuzzleVC */,
 				49FD86F11E2149BB008E9B15 /* PZMenuVC */,
 			);
 			path = Controllers;
@@ -222,9 +222,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				49509FE71E18772B00D69999 /* LaunchScreen.storyboard in Resources */,
-				49B87C121E215CE0005D6D84 /* PZGameVC.xib in Resources */,
 				49FD86F91E2149E8008E9B15 /* PZMenuVC.xib in Resources */,
 				49B87C221E2160BD005D6D84 /* Info.plist in Resources */,
+				49B87C301E21855D005D6D84 /* PZPuzzleVC.xib in Resources */,
 				49B87C141E215E2A005D6D84 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49B87C2F1E21855D005D6D84 /* PZPuzzleVC.swift in Sources */,
 				4950A0041E19223B00D69999 /* CustomStringConvertibleEXT.swift in Sources */,
 				49509FFE1E189F9600D69999 /* ArrayEXT.swift in Sources */,
 				49B87C2B1E2172AD005D6D84 /* GameBoard.swift in Sources */,
@@ -243,7 +244,6 @@
 				49509FF81E189BCE00D69999 /* UIViewEXT.swift in Sources */,
 				49B87C1B1E216096005D6D84 /* GameBoxImageView.swift in Sources */,
 				49FD86F81E2149E8008E9B15 /* PZMenuVC.swift in Sources */,
-				49B87C111E215CE0005D6D84 /* PZGameVC.swift in Sources */,
 				49FD86F01E2149A3008E9B15 /* PZBaseViewController.swift in Sources */,
 				49B87C211E2160BD005D6D84 /* AppDelegate.swift in Sources */,
 				49B87C1C1E216096005D6D84 /* GameBoxPoint.swift in Sources */,
