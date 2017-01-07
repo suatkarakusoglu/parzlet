@@ -8,13 +8,17 @@
 
 import UIKit
 
-class GameBox : CustomStringConvertible{
+class GameBox : CustomStringConvertible {
 
     var image: UIImage
     var realPoint: GameBoxPoint
     var currentPoint: GameBoxPoint
     var gameSizeLevel: Int
     var isEmpty: Bool = false
+    func isNotEmpty() -> Bool
+    {
+        return !isEmpty
+    }
     
     init(image: UIImage,
          realPoint: GameBoxPoint,
@@ -51,7 +55,21 @@ class GameBox : CustomStringConvertible{
         guard self.currentPoint.x + 1 < gameSizeLevel else { return nil }
         return GameBoxPoint(x: self.currentPoint.x + 1, y: self.currentPoint.y)
     }
-
+    
+    func getNextBoxPoint(direction: MoveDirection) -> GameBoxPoint?
+    {
+        switch direction {
+        case .DOWN:
+            return self.getDownBoxPoint()
+        case .LEFT:
+            return self.getLeftBoxPoint()
+        case .RIGHT:
+            return self.getRightBoxPoint()
+        case .UP:
+            return self.getUpBoxPoint()
+        }
+    }
+    
     func goLeftBox()
     {
         self.currentPoint.y = self.currentPoint.y - 1
@@ -70,6 +88,20 @@ class GameBox : CustomStringConvertible{
     func goDownBox()
     {
         self.currentPoint.x = self.currentPoint.x + 1
+    }
+    
+    func goToDirection(direction: MoveDirection)
+    {
+        switch direction {
+        case .DOWN:
+            self.goDownBox()
+        case .LEFT:
+            self.goLeftBox()
+        case .RIGHT:
+            self.goRightBox()
+        case .UP:
+            self.goUpBox()
+        }
     }
     
     var description : String {
