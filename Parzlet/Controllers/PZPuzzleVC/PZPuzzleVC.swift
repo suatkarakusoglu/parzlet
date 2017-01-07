@@ -12,10 +12,12 @@ class PZPuzzleVC: PZBaseViewController {
 
     @IBOutlet weak var viewPuzzleGameContainer: UIView!
     
+    var gameView: PZGameView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Puzzle (4x4)"
-        let realImage = UIImage(named: "ays")!
+        let realImage = UIImage(named: "sero")!
 
         let gameViewFrame = CGRect(
             x: 0,
@@ -23,11 +25,14 @@ class PZPuzzleVC: PZBaseViewController {
             width: self.viewPuzzleGameContainer.frame.size.width,
             height: self.viewPuzzleGameContainer.frame.size.height
         )
-        let gameView = PZGameView(
+        self.gameView = PZGameView(
             frame: gameViewFrame,
             imageToShow: realImage ,
             divisionLevel: 4
         )
-        self.viewPuzzleGameContainer.addSubview(gameView);
+        self.viewPuzzleGameContainer.addSubview(self.gameView!);
+    }
+    @IBAction func actionShufflePuzzle(_ sender: UIButton) {
+        self.gameView?.shuffleGameBox(randomMovementAmount: 3)
     }
 }
