@@ -195,21 +195,19 @@ class PZGameView: UIView {
     
     private func addDirectionSwipeGestures(imageSwiped: UIImageView)
     {
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.right
-        imageSwiped.addGestureRecognizer(swipeRight)
-        
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeDown.direction = UISwipeGestureRecognizerDirection.down
-        imageSwiped.addGestureRecognizer(swipeDown)
-        
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeUp.direction = UISwipeGestureRecognizerDirection.up
-        imageSwiped.addGestureRecognizer(swipeUp)
-        
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        imageSwiped.addGestureRecognizer(swipeLeft)
+        let gestureDirections: [UISwipeGestureRecognizerDirection] = [.right, .left, .up, .down]
+        gestureDirections.forEach{
+            imageSwiped.addGestureRecognizer(
+                self.createSwipeGestureRecognizer(direction: $0)
+            )
+        }
+    }
+    
+    private func createSwipeGestureRecognizer(direction: UISwipeGestureRecognizerDirection) -> UISwipeGestureRecognizer
+    {
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeGestureRecognizer.direction = direction
+        return swipeGestureRecognizer
     }
     
     func respondToSwipeGesture(gesture: UIGestureRecognizer) {
