@@ -79,15 +79,27 @@ class PZGameView: UIView {
     func shuffleGameBox(randomMovementAmount: Int)
     {
         var i = 0
+        var previousDirection: MoveDirection?
+        
         while i < randomMovementAmount
         {
             // It works for one empty box for now
             if let emptyGameBox = self.gameBoard.emptyBoxes.first
             {
+                let randomDirection = MoveDirection.randomDirection()
+                "\(randomDirection) is generated.".logMe()
+                "\(previousDirection) was prev direction.".logMe()
+                if randomDirection == previousDirection ||
+                    randomDirection == previousDirection?.getReverseDirection() {
+                    "Continueing".logMe()
+                    continue
+                }
+                
                 let isMoved = self.moveGameBox(
                     gameBox: emptyGameBox,
-                    direction: MoveDirection.randomDirection()
+                    direction: randomDirection
                 )
+                previousDirection = randomDirection
                 if isMoved { i = i + 1 }
             }
         }
@@ -113,6 +125,10 @@ class PZGameView: UIView {
         self.changePlaces(gameBox1: gameBox, gameBox2: nextDestinationBox)
         nextDestinationBox.goToDirection(direction: direction.getReverseDirection())
         gameBox.goToDirection(direction: direction)
+        
+        if gameBoard.isSucceeded(){
+            "Congrats".logMe()
+        }
         self.drawGameBoard()
         return true
     }

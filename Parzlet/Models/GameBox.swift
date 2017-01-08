@@ -15,6 +15,7 @@ class GameBox : CustomStringConvertible {
     var currentPoint: GameBoxPoint
     var gameSizeLevel: Int
     var isEmpty: Bool = false
+    
     func isNotEmpty() -> Bool
     {
         return !isEmpty
@@ -106,6 +107,11 @@ class GameBox : CustomStringConvertible {
     
     var description : String {
         return "[RealPoint: \(self.realPoint), CurrentPoint: \(self.currentPoint), isEmpty: \(self.isEmpty)]"
+    }
+    
+    func isInItsRealPlace() -> Bool
+    {
+        return self.currentPoint == self.realPoint
     }
 }
     

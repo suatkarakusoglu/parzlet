@@ -20,8 +20,17 @@ class GameBoard
     
     func setGameBox(gameBox: GameBox, gameBoxPoint: GameBoxPoint)
     {
-      //  let oldGameBox = self.getGameBox(gameBoxPoint: gameBoxPoint)
         self.boxes[gameBoxPoint.x][gameBoxPoint.y] = gameBox
-      //  return oldGameBox
+    }
+    
+    func isSucceeded() -> Bool
+    {
+        let isFailed = boxes.contains { (gameBoxesRow: [GameBox]) -> Bool in
+            gameBoxesRow.contains(where: { (gameBox: GameBox) -> Bool in
+                !(gameBox.currentPoint == gameBox.realPoint)
+            })
+        }
+        
+        return !isFailed
     }
 }

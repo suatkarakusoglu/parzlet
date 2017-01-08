@@ -7,6 +7,7 @@
 //
 
 import UIKit
+infix operator == { associativity left precedence 140 } // 1
 
 class GameBoxPoint: CustomStringConvertible {
     var x: Int
@@ -18,5 +19,10 @@ class GameBoxPoint: CustomStringConvertible {
     
     var description: String{
         return "[x:\(self.x), y: \(self.y)]"
+    }
+    
+    static func ==(leftGameBoxPoint: GameBoxPoint, rightGameBoxPoint: GameBoxPoint) -> Bool {
+        return (leftGameBoxPoint.x == rightGameBoxPoint.x) &&
+            (leftGameBoxPoint.y == rightGameBoxPoint.y)
     }
 }
