@@ -35,12 +35,21 @@
                         <constraint firstAttribute="width" secondItem="el7-f6-brp" secondAttribute="height" multiplier="1:1" id="EXK-Eg-jAW"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2I7-gQ-RsS">
+                    <rect key="frame" x="317" y="542" width="38" height="30"/>
+                    <state key="normal" title="Solve"/>
+                    <connections>
+                        <action selector="actionSolvePuzzle:" destination="-1" eventType="touchUpInside" id="c7b-ku-4bp"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="2I7-gQ-RsS" firstAttribute="centerY" secondItem="el7-f6-brp" secondAttribute="centerY" id="37X-tp-r5k"/>
                 <constraint firstItem="u10-UQ-XLL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HA1-XF-TM0"/>
                 <constraint firstItem="u10-UQ-XLL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="67" id="Hhw-y0-Z9F"/>
                 <constraint firstAttribute="trailing" secondItem="u10-UQ-XLL" secondAttribute="trailing" id="Jtb-pU-gA1"/>
+                <constraint firstItem="2I7-gQ-RsS" firstAttribute="leading" secondItem="el7-f6-brp" secondAttribute="trailing" constant="24.5" id="LfD-Wn-dLk"/>
                 <constraint firstItem="el7-f6-brp" firstAttribute="top" secondItem="u10-UQ-XLL" secondAttribute="bottom" constant="10" id="XQr-Xy-tfE"/>
                 <constraint firstAttribute="bottom" secondItem="el7-f6-brp" secondAttribute="bottom" constant="4" id="f2P-cj-xZ4"/>
                 <constraint firstItem="el7-f6-brp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="giT-y7-Q1c"/>

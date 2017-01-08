@@ -46,4 +46,9 @@ class PZPuzzleVC: PZBaseViewController {
             randomMovementAmount: self.shuffleLevel.getLevelShuffleAmount())
         self.imageViewOriginal.image = self.imageForPuzzle
     }
+    
+    @IBAction func actionSolvePuzzle(_ sender: UIButton)
+    {
+        self.gameView?.solve(amountStep: 5)
+    }
 }

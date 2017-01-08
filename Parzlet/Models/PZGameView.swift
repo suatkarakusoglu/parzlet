@@ -22,7 +22,8 @@ class PZGameView: UIView {
     var divisionLevel: Int!
     var imageToShow: UIImage!
     var clickAmount: Int = 0
-    
+    var playersDirections: [MoveDirection] = []
+
     convenience init(
         frame: CGRect,
         imageToShow: UIImage,
@@ -80,7 +81,6 @@ class PZGameView: UIView {
     {
         var i = 0
         var previousDirection: MoveDirection?
-        
         while i < randomMovementAmount
         {
             // It works for one empty box for now
@@ -100,14 +100,15 @@ class PZGameView: UIView {
                     direction: randomDirection
                 )
                 previousDirection = randomDirection
-                if isMoved { i = i + 1 }
+                if isMoved {
+                    i = i + 1
+                }
             }
         }
-        
         self.drawGameBoard()
     }
     
-    private func moveGameBox(gameBox: GameBox, direction: MoveDirection) -> Bool
+    func moveGameBox(gameBox: GameBox, direction: MoveDirection) -> Bool
     {
         guard let nextDestinationBoxPoint = gameBox.getNextBoxPoint(direction: direction)
             else {
@@ -125,7 +126,7 @@ class PZGameView: UIView {
         self.changePlaces(gameBox1: gameBox, gameBox2: nextDestinationBox)
         nextDestinationBox.goToDirection(direction: direction.getReverseDirection())
         gameBox.goToDirection(direction: direction)
-        
+        self.playersDirections.append(direction)
         if gameBoard.isSucceeded(){
             "Congrats".logMe()
         }
@@ -254,8 +255,20 @@ class PZGameView: UIView {
         }
     }
     
+    func getSolutionDirections() -> [MoveDirection]
+    {
+        return self.playersDirections.map{ $0.getReverseDirection() }
+            .reversed()
+    }
+    
     private func incrementMoveCount()
     {
         self.clickAmount = self.clickAmount + 1
+    }
+    
+    func solve(amountStep: Int)
+    {
+        getSolutionDirections().logMe(note: "Solution : ")
+        "Solve here".logMe()
     }
 }
