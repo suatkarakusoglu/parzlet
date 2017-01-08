@@ -9,14 +9,24 @@
 import UIKit
 
 class PZPuzzleVC: PZBaseViewController {
-
-    @IBOutlet weak var viewPuzzleGameContainer: UIView!
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    init(imageForPuzzle: UIImage, divisionLevel: Int)
+    {
+        self.imageForPuzzle = imageForPuzzle
+        self.divisionLevel = divisionLevel
+        super.init(nibName: PZPuzzleVC.className() , bundle: nil)
+    }
     
+    @IBOutlet weak var viewPuzzleGameContainer: UIView!
+    var imageForPuzzle: UIImage
+    var divisionLevel: Int
     var gameView: PZGameView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Puzzle (4x4)"
+        self.navigationItem.title = "Puzzle (\(divisionLevel)x\(divisionLevel))"
         let realImage = UIImage(named: "sero")!
 
         let gameViewFrame = CGRect(
@@ -28,7 +38,7 @@ class PZPuzzleVC: PZBaseViewController {
         self.gameView = PZGameView(
             frame: gameViewFrame,
             imageToShow: realImage ,
-            divisionLevel: 4
+            divisionLevel: 15
         )
         self.viewPuzzleGameContainer.addSubview(self.gameView!);
     }

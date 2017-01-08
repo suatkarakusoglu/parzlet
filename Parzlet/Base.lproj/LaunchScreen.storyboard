@@ -21,17 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RqN-QJ-4E9">
-                                <rect key="frame" x="163.5" y="318.5" width="48" height="30"/>
-                                <state key="normal" title="Parzlet">
-                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueBg" translatesAutoresizingMaskIntoConstraints="NO" id="Arq-Ne-pzG">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.2662425352462201" green="0.21731292793838064" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RqN-QJ-4E9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="WFO-kG-jy0"/>
-                            <constraint firstItem="RqN-QJ-4E9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="geJ-m7-0Ph"/>
+                            <constraint firstItem="Arq-Ne-pzG" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Zei-3O-jJC"/>
+                            <constraint firstItem="Arq-Ne-pzG" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="gPn-dh-sJz"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Arq-Ne-pzG" secondAttribute="bottom" id="idT-e2-jMA"/>
+                            <constraint firstAttribute="trailing" secondItem="Arq-Ne-pzG" secondAttribute="trailing" id="p6N-Xv-3Ol"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,4 +39,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="blueBg" width="368" height="669"/>
+    </resources>
 </document>

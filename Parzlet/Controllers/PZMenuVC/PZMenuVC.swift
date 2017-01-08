@@ -21,6 +21,6 @@ class PZMenuVC: PZBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = "Parzlet Puzzle"
     }
 }
