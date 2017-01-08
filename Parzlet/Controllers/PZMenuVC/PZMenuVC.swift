@@ -29,7 +29,7 @@ class PZMenuVC: PZBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Parzlet Puzzle"
+        self.navigationItem.title = "Parzlet"
         self.configureViews()
     }
     
@@ -66,6 +66,8 @@ class PZMenuVC: PZBaseViewController {
     
     @IBAction func setDivisionLevel(_ sender: UIButton)
     {
+        self.buttonsDivisionLevels.forEach{ $0.backgroundColor = UIColor.black }
+        sender.backgroundColor = UIColor.red
         if let clickedDivisionLevel = Int((sender.titleLabel?.text)!)
         {
             self.selectedDivisionLevel = clickedDivisionLevel
@@ -74,6 +76,8 @@ class PZMenuVC: PZBaseViewController {
     
     @IBAction func setShuffleLevel(_ sender: UIButton)
     {
+        self.buttonsForShuffleLevels.forEach{ $0.backgroundColor = UIColor.orange }
+        sender.backgroundColor = UIColor.red
         let shuffleLevelTag = sender.tag
         self.selectedShuffleLevel =  ShuffleLevel(rawValue: shuffleLevelTag)!
     }

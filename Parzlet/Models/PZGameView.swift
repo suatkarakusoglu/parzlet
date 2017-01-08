@@ -235,7 +235,9 @@ class PZGameView: UIView {
             isMovedSuccessfully = false
         }
        
-        self.incrementMoveCount()
+        if isMovedSuccessfully{
+            self.incrementMoveCount()
+        }
     }
     
     private func incrementMoveCount()
