@@ -15,4 +15,20 @@ extension UIView
         self.layer.borderWidth = CGFloat(borderWidth)
         self.layer.borderColor = color.cgColor
     }
+    
+    func setCornerRadius(radius:Int)
+    {
+        self.layer.cornerRadius = CGFloat(radius);
+        self.layer.masksToBounds = true;
+    }
+
+    func hide()
+    {
+        self.isHidden = true
+    }
+    
+    func unhide()
+    {
+        self.isHidden = false
+    }
 }

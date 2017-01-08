@@ -12,37 +12,38 @@ class PZPuzzleVC: PZBaseViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    init(imageForPuzzle: UIImage, divisionLevel: Int)
+    init(imageForPuzzle: UIImage, divisionLevel: Int, shuffleLevel: ShuffleLevel)
     {
         self.imageForPuzzle = imageForPuzzle
         self.divisionLevel = divisionLevel
+        self.shuffleLevel = shuffleLevel
         super.init(nibName: PZPuzzleVC.className() , bundle: nil)
     }
     
     @IBOutlet weak var viewPuzzleGameContainer: UIView!
+    @IBOutlet weak var imageViewOriginal: UIImageView!
     var imageForPuzzle: UIImage
     var divisionLevel: Int
+    var shuffleLevel: ShuffleLevel
     var gameView: PZGameView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Puzzle (\(divisionLevel)x\(divisionLevel))"
-        let realImage = UIImage(named: "sero")!
-
         let gameViewFrame = CGRect(
             x: 0,
             y: 0,
-            width: self.viewPuzzleGameContainer.frame.size.width,
-            height: self.viewPuzzleGameContainer.frame.size.height
+            width: ScreenSize.width,
+            height: ScreenSize.width
         )
         self.gameView = PZGameView(
             frame: gameViewFrame,
-            imageToShow: realImage ,
-            divisionLevel: 15
+            imageToShow: self.imageForPuzzle,
+            divisionLevel: self.divisionLevel
         )
         self.viewPuzzleGameContainer.addSubview(self.gameView!);
-    }
-    @IBAction func actionShufflePuzzle(_ sender: UIButton) {
-        self.gameView?.shuffleGameBox(randomMovementAmount: 3)
+        self.gameView?.shuffleGameBox(
+            randomMovementAmount: self.shuffleLevel.getLevelShuffleAmount())
+        self.imageViewOriginal.image = self.imageForPuzzle
     }
 }

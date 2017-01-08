@@ -6,11 +6,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PZPuzzleVC" customModule="Parzlet" customModuleProvider="target">
             <connections>
+                <outlet property="imageViewOriginal" destination="el7-f6-brp" id="Rxm-gN-NHt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewPuzzleGameContainer" destination="u10-UQ-XLL" id="yhL-x1-sN0"/>
             </connections>
@@ -24,24 +26,24 @@
                     <rect key="frame" x="0.0" y="67" width="375" height="375"/>
                     <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="375" id="gEM-u6-AZW"/>
+                        <constraint firstAttribute="width" secondItem="u10-UQ-XLL" secondAttribute="height" multiplier="1:1" id="twW-Xc-3WL"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPI-b8-nq3">
-                    <rect key="frame" x="162" y="637" width="50" height="30"/>
-                    <state key="normal" title="Shuffle"/>
-                    <connections>
-                        <action selector="actionShufflePuzzle:" destination="-1" eventType="touchUpInside" id="w5f-cr-IFf"/>
-                    </connections>
-                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="el7-f6-brp">
+                    <rect key="frame" x="81.5" y="452" width="211" height="211"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="el7-f6-brp" secondAttribute="height" multiplier="1:1" id="EXK-Eg-jAW"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="u10-UQ-XLL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HA1-XF-TM0"/>
-                <constraint firstItem="lPI-b8-nq3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="HeQ-bv-fiV"/>
                 <constraint firstItem="u10-UQ-XLL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="67" id="Hhw-y0-Z9F"/>
                 <constraint firstAttribute="trailing" secondItem="u10-UQ-XLL" secondAttribute="trailing" id="Jtb-pU-gA1"/>
-                <constraint firstAttribute="bottom" secondItem="lPI-b8-nq3" secondAttribute="bottom" id="tGK-7h-Jbo"/>
+                <constraint firstItem="el7-f6-brp" firstAttribute="top" secondItem="u10-UQ-XLL" secondAttribute="bottom" constant="10" id="XQr-Xy-tfE"/>
+                <constraint firstAttribute="bottom" secondItem="el7-f6-brp" secondAttribute="bottom" constant="4" id="f2P-cj-xZ4"/>
+                <constraint firstItem="el7-f6-brp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="giT-y7-Q1c"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="34.5" y="54.5"/>

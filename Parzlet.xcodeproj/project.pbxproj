@@ -24,6 +24,8 @@
 		49B87C2B1E2172AD005D6D84 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B87C2A1E2172AD005D6D84 /* GameBoard.swift */; };
 		49B87C2F1E21855D005D6D84 /* PZPuzzleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B87C2D1E21855D005D6D84 /* PZPuzzleVC.swift */; };
 		49B87C301E21855D005D6D84 /* PZPuzzleVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B87C2E1E21855D005D6D84 /* PZPuzzleVC.xib */; };
+		49B87C331E226785005D6D84 /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B87C321E226785005D6D84 /* ScreenSize.swift */; };
+		49B87C351E22695A005D6D84 /* ShuffleLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B87C341E22695A005D6D84 /* ShuffleLevel.swift */; };
 		49FD86F01E2149A3008E9B15 /* PZBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD86EF1E2149A2008E9B15 /* PZBaseViewController.swift */; };
 		49FD86F81E2149E8008E9B15 /* PZMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FD86F61E2149E8008E9B15 /* PZMenuVC.swift */; };
 		49FD86F91E2149E8008E9B15 /* PZMenuVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49FD86F71E2149E8008E9B15 /* PZMenuVC.xib */; };
@@ -50,6 +52,8 @@
 		49B87C2A1E2172AD005D6D84 /* GameBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		49B87C2D1E21855D005D6D84 /* PZPuzzleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZPuzzleVC.swift; sourceTree = "<group>"; };
 		49B87C2E1E21855D005D6D84 /* PZPuzzleVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PZPuzzleVC.xib; sourceTree = "<group>"; };
+		49B87C321E226785005D6D84 /* ScreenSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		49B87C341E22695A005D6D84 /* ShuffleLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShuffleLevel.swift; sourceTree = "<group>"; };
 		49FD86EF1E2149A2008E9B15 /* PZBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZBaseViewController.swift; sourceTree = "<group>"; };
 		49FD86F61E2149E8008E9B15 /* PZMenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PZMenuVC.swift; sourceTree = "<group>"; };
 		49FD86F71E2149E8008E9B15 /* PZMenuVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PZMenuVC.xib; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				49B87C1E1E2160BD005D6D84 /* AppFiles */,
+				49B87C311E226773005D6D84 /* Helpers */,
 				49B87C151E216072005D6D84 /* Models */,
 				49FD86EE1E21498E008E9B15 /* Controllers */,
 				49509FF41E18971000D69999 /* Extensions */,
@@ -120,6 +125,7 @@
 				49B87C191E216096005D6D84 /* MoveDirection.swift */,
 				49B87C2A1E2172AD005D6D84 /* GameBoard.swift */,
 				49B87C281E216C81005D6D84 /* PZGameView.swift */,
+				49B87C341E22695A005D6D84 /* ShuffleLevel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -142,12 +148,20 @@
 			path = PZPuzzleVC;
 			sourceTree = "<group>";
 		};
+		49B87C311E226773005D6D84 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				49B87C321E226785005D6D84 /* ScreenSize.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		49FD86EE1E21498E008E9B15 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				49FD86EF1E2149A2008E9B15 /* PZBaseViewController.swift */,
-				49B87C2C1E21853C005D6D84 /* PZPuzzleVC */,
 				49FD86F11E2149BB008E9B15 /* PZMenuVC */,
+				49B87C2C1E21853C005D6D84 /* PZPuzzleVC */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -242,6 +256,7 @@
 				49B87C2B1E2172AD005D6D84 /* GameBoard.swift in Sources */,
 				49FD86FB1E214A83008E9B15 /* UIViewControllerEXT.swift in Sources */,
 				49509FF81E189BCE00D69999 /* UIViewEXT.swift in Sources */,
+				49B87C331E226785005D6D84 /* ScreenSize.swift in Sources */,
 				49B87C1B1E216096005D6D84 /* GameBoxImageView.swift in Sources */,
 				49FD86F81E2149E8008E9B15 /* PZMenuVC.swift in Sources */,
 				49FD86F01E2149A3008E9B15 /* PZBaseViewController.swift in Sources */,
@@ -251,6 +266,7 @@
 				49B87C1D1E216096005D6D84 /* MoveDirection.swift in Sources */,
 				49B87C1A1E216096005D6D84 /* GameBox.swift in Sources */,
 				49509FF61E18972F00D69999 /* UIImageEXT.swift in Sources */,
+				49B87C351E22695A005D6D84 /* ShuffleLevel.swift in Sources */,
 				4929CF1A1E1BFB5800942138 /* RandomAccessCollectionEXT.swift in Sources */,
 				49FD86FD1E214B37008E9B15 /* NSObjectEXT.swift in Sources */,
 			);

@@ -21,6 +21,7 @@ class PZGameView: UIView {
     var gameBoard : GameBoard = GameBoard()
     var divisionLevel: Int!
     var imageToShow: UIImage!
+    var clickAmount: Int = 0
     
     convenience init(
         frame: CGRect,
@@ -109,7 +110,6 @@ class PZGameView: UIView {
             "\(direction) full!".logMe()
             return false
         }
-        
         self.changePlaces(gameBox1: gameBox, gameBox2: nextDestinationBox)
         nextDestinationBox.goToDirection(direction: direction.getReverseDirection())
         gameBox.goToDirection(direction: direction)
@@ -152,7 +152,16 @@ class PZGameView: UIView {
                 currentImageView.gameBox = gameBoxItem
                 currentImageView.isUserInteractionEnabled = true
                 if gameBoxItem.isEmpty {
+                
+                    let labelClickAmount = UILabel(
+                        frame: CGRect(x:8, y:4 , width: 60, height: 40))
+                    labelClickAmount.textColor = UIColor.black
+                    labelClickAmount.font = UIFont.boldSystemFont(ofSize: 24)
+                    labelClickAmount.text = String(self.clickAmount)
+                        
                     currentImageView.image = UIImage(named: "empty_box")!
+                    currentImageView.addSubview(labelClickAmount)
+                
                 }else{
                     currentImageView.image = imageToDraw
                     
@@ -160,10 +169,9 @@ class PZGameView: UIView {
                     currentImageView.addGestureRecognizer(tapGesture)
                     self.addDirectionSwipeGestures(imageSwiped: currentImageView)
                 }
-                
                 currentImageView.drawBorder(
-                    color: UIColor.green,
-                    borderWidth: 0.5)
+                    color: UIColor.black,
+                    borderWidth: 1)
                 self.addSubview(currentImageView)
             }
         }
@@ -174,16 +182,16 @@ class PZGameView: UIView {
         guard let gameBoxImageView = sender.view as? GameBoxImageView else { return }
         guard let gameBoxToMove = gameBoxImageView.gameBox else { return }
         
-        let movedUp = self.moveGameBox(gameBox: gameBoxToMove, direction: .UP)
-        if movedUp { return }
-        let movedDown = self.moveGameBox(gameBox: gameBoxToMove, direction: .DOWN)
-        if movedDown { return }
-        let movedLeft = self.moveGameBox(gameBox: gameBoxToMove, direction: .LEFT)
-        if movedLeft { return }
-        let movedRight = self.moveGameBox(gameBox: gameBoxToMove, direction: .RIGHT)
-        if movedRight { return }
-    }
+        let isMovedSuccessfully =
+            self.moveGameBox(gameBox: gameBoxToMove, direction: .UP) ||
+                self.moveGameBox(gameBox: gameBoxToMove, direction: .DOWN) ||
+                self.moveGameBox(gameBox: gameBoxToMove, direction: .LEFT) ||
+                self.moveGameBox(gameBox: gameBoxToMove, direction: .RIGHT)
     
+        if isMovedSuccessfully {
+            self.incrementMoveCount()
+        }
+    }
     
     private func addDirectionSwipeGestures(imageSwiped: UIImageView)
     {
@@ -204,26 +212,34 @@ class PZGameView: UIView {
         imageSwiped.addGestureRecognizer(swipeLeft)
     }
     
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) -> Bool {
-        guard let swipeGesture = gesture as? UISwipeGestureRecognizer else { return false }
-        guard let gameBoxImageView = gesture.view as? GameBoxImageView else { return false }
-        guard let activeGameBox = gameBoxImageView.gameBox else { return false }
+    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        guard let swipeGesture = gesture as? UISwipeGestureRecognizer else { return }
+        guard let gameBoxImageView = gesture.view as? GameBoxImageView else { return }
+        guard let activeGameBox = gameBoxImageView.gameBox else { return }
 
+        var isMovedSuccessfully = false
         switch swipeGesture.direction {
         case UISwipeGestureRecognizerDirection.right:
-            return self.moveGameBox(gameBox: activeGameBox,
+            isMovedSuccessfully = self.moveGameBox(gameBox: activeGameBox,
                                     direction: .RIGHT)
         case UISwipeGestureRecognizerDirection.down:
-            return self.moveGameBox(gameBox: activeGameBox,
+            isMovedSuccessfully = self.moveGameBox(gameBox: activeGameBox,
                                     direction: .DOWN)
         case UISwipeGestureRecognizerDirection.up:
-            return self.moveGameBox(gameBox: activeGameBox,
+            isMovedSuccessfully = self.moveGameBox(gameBox: activeGameBox,
                                     direction: .UP)
         case UISwipeGestureRecognizerDirection.left:
-            return self.moveGameBox(gameBox: activeGameBox,
+            isMovedSuccessfully = self.moveGameBox(gameBox: activeGameBox,
                                     direction: .LEFT)
         default:
-            return false
+            isMovedSuccessfully = false
         }
+       
+        self.incrementMoveCount()
+    }
+    
+    private func incrementMoveCount()
+    {
+        self.clickAmount = self.clickAmount + 1
     }
 }

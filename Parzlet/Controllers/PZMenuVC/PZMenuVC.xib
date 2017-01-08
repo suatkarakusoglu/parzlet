@@ -12,7 +12,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PZMenuVC" customModule="Parzlet" customModuleProvider="target">
             <connections>
+                <outlet property="buttonStartPuzzle" destination="Jh4-kc-6a6" id="AIz-E3-BTN"/>
+                <outlet property="imagePuzzlePreview" destination="8JZ-2S-Bfy" id="GfS-4A-Z5c"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="buttonsForImageSources" destination="XW5-Ou-wx1" collectionClass="NSMutableArray" id="noB-9G-tBy"/>
+                <outletCollection property="buttonsForImageSources" destination="c9s-9D-5Ee" collectionClass="NSMutableArray" id="oOP-zi-ao5"/>
+                <outletCollection property="buttonsForImageSources" destination="Zbj-cw-09I" collectionClass="NSMutableArray" id="dGp-Oj-OJg"/>
+                <outletCollection property="buttonsDivisionLevels" destination="oi3-l1-N1k" collectionClass="NSMutableArray" id="LAU-9S-oRc"/>
+                <outletCollection property="buttonsDivisionLevels" destination="RnK-kx-iLJ" collectionClass="NSMutableArray" id="bHd-2w-aPs"/>
+                <outletCollection property="buttonsDivisionLevels" destination="09h-EF-faM" collectionClass="NSMutableArray" id="r7U-cx-SFU"/>
+                <outletCollection property="buttonsDivisionLevels" destination="nQh-Rf-7MB" collectionClass="NSMutableArray" id="uiy-PI-fc6"/>
+                <outletCollection property="buttonsForShuffleLevels" destination="Ytw-WL-AoT" collectionClass="NSMutableArray" id="vyc-fo-Pvf"/>
+                <outletCollection property="buttonsForShuffleLevels" destination="KyY-Dx-xcw" collectionClass="NSMutableArray" id="Cul-Dp-uz0"/>
+                <outletCollection property="buttonsForShuffleLevels" destination="s4G-Nz-gGj" collectionClass="NSMutableArray" id="Muh-KA-WST"/>
+                <outletCollection property="buttonsForShuffleLevels" destination="MU7-fl-Hkn" collectionClass="NSMutableArray" id="yil-98-yHm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,7 +36,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightBlueBg" translatesAutoresizingMaskIntoConstraints="NO" id="6vf-en-ten">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="etJ-Hu-Bbn">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="etJ-Hu-Bbn" userLabel="stackViewImageSources">
                     <rect key="frame" x="8" y="72" width="359" height="148"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9s-9D-5Ee">
@@ -67,12 +80,15 @@
                     <state key="normal" title="Start Puzzle">
                         <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="actionStartPuzzle:" destination="-1" eventType="touchUpInside" id="3hr-Jo-cIe"/>
+                    </connections>
                 </button>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8sA-z3-2Rv">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8sA-z3-2Rv" userLabel="stackViewDivisionLevels">
                     <rect key="frame" x="8" y="555" width="359" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oi3-l1-N1k">
-                            <rect key="frame" x="0.0" y="0.0" width="48" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="87" height="44"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="TI8-DY-jwa"/>
@@ -80,9 +96,12 @@
                             <state key="normal" title="3">
                                 <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="setDivisionLevel:" destination="-1" eventType="touchUpInside" id="bK5-yk-7u2"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RnK-kx-iLJ">
-                            <rect key="frame" x="52" y="0.0" width="47.5" height="44"/>
+                            <rect key="frame" x="91" y="0.0" width="86.5" height="44"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="LFz-ql-eeE"/>
@@ -90,9 +109,12 @@
                             <state key="normal" title="4">
                                 <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="setDivisionLevel:" destination="-1" eventType="touchUpInside" id="oWp-dg-4No"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09h-EF-faM">
-                            <rect key="frame" x="103.5" y="0.0" width="48" height="44"/>
+                            <rect key="frame" x="181.5" y="0.0" width="87" height="44"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="f3m-2d-TAj"/>
@@ -100,9 +122,12 @@
                             <state key="normal" title="5">
                                 <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="setDivisionLevel:" destination="-1" eventType="touchUpInside" id="RY8-aK-ehj"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nQh-Rf-7MB">
-                            <rect key="frame" x="155.5" y="0.0" width="48" height="44"/>
+                            <rect key="frame" x="272.5" y="0.0" width="86.5" height="44"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="K0C-aY-dPX"/>
@@ -110,47 +135,20 @@
                             <state key="normal" title="6">
                                 <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYb-Ri-2nv">
-                            <rect key="frame" x="207.5" y="0.0" width="48" height="44"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="TVJ-Hg-57o"/>
-                            </constraints>
-                            <state key="normal" title="7">
-                                <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQR-SB-aI2">
-                            <rect key="frame" x="259.5" y="0.0" width="47.5" height="44"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="hpU-0D-FTo"/>
-                            </constraints>
-                            <state key="normal" title="8">
-                                <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ooy-Lv-WIX">
-                            <rect key="frame" x="311" y="0.0" width="48" height="44"/>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="bEO-6y-0Zz"/>
-                            </constraints>
-                            <state key="normal" title="9">
-                                <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
+                            <connections>
+                                <action selector="setDivisionLevel:" destination="-1" eventType="touchUpInside" id="qPI-19-C1d"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sero" translatesAutoresizingMaskIntoConstraints="NO" id="8JZ-2S-Bfy">
-                    <rect key="frame" x="77.5" y="236" width="220" height="220"/>
+                    <rect key="frame" x="64" y="236" width="247" height="247"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="8JZ-2S-Bfy" secondAttribute="height" multiplier="1:1" id="Ghb-Wc-dcK"/>
-                        <constraint firstAttribute="height" constant="220" id="k5N-4D-dlu"/>
+                        <constraint firstAttribute="height" priority="250" constant="220" id="k5N-4D-dlu"/>
                     </constraints>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2PS-SR-D7U">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="2PS-SR-D7U" userLabel="stackViewShuffleLevels">
                     <rect key="frame" x="8" y="503" width="359" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU7-fl-Hkn">
@@ -162,8 +160,11 @@
                             <state key="normal" title="Easy">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="setShuffleLevel:" destination="-1" eventType="touchUpInside" id="izf-nI-KQB"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4G-Nz-gGj">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4G-Nz-gGj">
                             <rect key="frame" x="91" y="0.0" width="86" height="44"/>
                             <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -172,8 +173,11 @@
                             <state key="normal" title="Medium">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="setShuffleLevel:" destination="-1" eventType="touchUpInside" id="GPW-0q-93h"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytw-WL-AoT">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytw-WL-AoT">
                             <rect key="frame" x="182" y="0.0" width="86" height="44"/>
                             <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -182,8 +186,11 @@
                             <state key="normal" title="Hard">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="setShuffleLevel:" destination="-1" eventType="touchUpInside" id="lDv-dK-jtM"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KyY-Dx-xcw">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KyY-Dx-xcw">
                             <rect key="frame" x="273" y="0.0" width="86" height="44"/>
                             <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -192,6 +199,9 @@
                             <state key="normal" title="Pro">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="setShuffleLevel:" destination="-1" eventType="touchUpInside" id="tAl-b9-FuC"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
@@ -211,6 +221,7 @@
                 <constraint firstAttribute="trailing" secondItem="2PS-SR-D7U" secondAttribute="trailing" constant="8" id="aQE-wG-MwY"/>
                 <constraint firstAttribute="trailing" secondItem="6vf-en-ten" secondAttribute="trailing" id="f63-yD-ELq"/>
                 <constraint firstItem="8sA-z3-2Rv" firstAttribute="top" secondItem="2PS-SR-D7U" secondAttribute="bottom" constant="8" id="fIP-Z2-Mla"/>
+                <constraint firstItem="2PS-SR-D7U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8JZ-2S-Bfy" secondAttribute="bottom" constant="20" id="ghP-LN-05c"/>
                 <constraint firstItem="8sA-z3-2Rv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="gpb-AY-Rfp"/>
                 <constraint firstItem="etJ-Hu-Bbn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="jbZ-13-ekg"/>
                 <constraint firstItem="2PS-SR-D7U" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ka6-R4-T6M"/>
