@@ -39,5 +39,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need the open gallery to use for puzzles.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need the camera to shoot photos for puzzles.</string>
 </dict>
 </plist>

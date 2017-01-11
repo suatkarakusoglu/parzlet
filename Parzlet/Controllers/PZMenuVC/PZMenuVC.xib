@@ -48,6 +48,9 @@
                             <state key="normal" title="Took From Camera">
                                 <color key="titleColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="actionTookFromCamera:" destination="-1" eventType="touchUpInside" id="PGv-gE-SmH"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XW5-Ou-wx1">
                             <rect key="frame" x="0.0" y="52" width="359" height="44"/>
@@ -56,6 +59,9 @@
                                 <constraint firstAttribute="height" constant="44" id="wQc-oE-jbx"/>
                             </constraints>
                             <state key="normal" title="Select From Photo Gallery"/>
+                            <connections>
+                                <action selector="actionSelectImageFromPhotoGallery:" destination="-1" eventType="touchUpInside" id="Keh-4I-cq8"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbj-cw-09I">
                             <rect key="frame" x="0.0" y="104" width="359" height="44"/>
@@ -66,6 +72,9 @@
                             <state key="normal" title="Select From Our Gallery">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="actionSelectFromOurGallery:" destination="-1" eventType="touchUpInside" id="Udc-kO-Qo2"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.93265224358974363" green="0.14332983370136554" blue="0.085023665587772274" alpha="1" colorSpace="calibratedRGB"/>
